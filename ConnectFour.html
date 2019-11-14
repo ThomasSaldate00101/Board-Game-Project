@@ -7,12 +7,20 @@
     <title>multi choice story</title>
 </head>
 <body>
-    <h1>Connect Four</h1>
-    <h2>Connect Four</h2>
- <p>Connect Four is a two player game that uses checkers. Players will alternate turns after placing a checker. If it is your turn, drop a checker down any of the seven cloumns that are six rows high. . </p>  
-
- 
- <p>The goal of the game is to get a vertical,diagonal, or horizontal row of checkers that are the color you chose before the game.</p>
+    <h1>Connect Five</h1>
+ <p>Connect Five is a two player game that uses checkers. Players will alternate turns after placing a checker. If it is your turn, drop a checker down any of the seven cloumns that are six rows high. . </p>  
+ <p id="rules">Click for Rules</p>
 </body>
 <script>
+document.getElementById("rules").onclick = function() {myFunction()};
+
+function myFunction() {
+  document.getElementById("rules").innerHTML = "There are two buttons with distincs colors, each player will choose one team, after you will decide who goes first. Whoever goes first will click the desired row and a token will go down to the bottom of that row, then whoever is second clicks the button above their desired row. The game will continue until someone has a row of four that is vertical, diagonal, or horizontal. Though if a row is full of six tokens that row will reset, and if a token is to be surrounded by the opposite team however many tokens that is surrounded will be deleted. ";
+}
+
+
+
+
+
+
 </script>
