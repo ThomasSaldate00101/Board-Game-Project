@@ -11,7 +11,10 @@
     <h1 style="text-align: center;">Connect Five</h1>
  <p><font size="5">Connect Five is a two player game that uses checkers. Players will alternate turns after placing a checker. If it is your turn, drop a checker down any of the seven cloumns that are six rows high.</font></p>  
 
- 
+ <button type="button" onclick="teamButtonRed()">Set team color red</button>
+
+ <button type="button" onclick="teamButtonBlue()">Set team color blue</button>
+
 
  <p id="rules"><font size="5">Click for Rules</font></p>
 </body>
@@ -22,7 +25,14 @@ function myFunction() {
   document.getElementById("rules").innerHTML = "There are two buttons with distincs colors, each player will choose one team, after you will decide who goes first. Whoever goes first will click the desired row and a token will go down to the bottom of that row, then whoever is second clicks the button above their desired row. The game will continue until someone has a row of four that is vertical, diagonal, or horizontal. Though if a row is full of six tokens that row will reset, and if a token is to be surrounded by the opposite team however many tokens that is surrounded will be deleted. ";
 }
 
+function teamButtonRed(){
+  document.body.style.backgroundColor = "red";
+}
 
+function teamButtonBlue(){
+  document.body.style.backgroundColor = "blue";
+
+}
 
 
 
