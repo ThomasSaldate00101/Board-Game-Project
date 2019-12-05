@@ -8,6 +8,14 @@
     <title>multi choice story</title>
    
 </head>
+<style>
+td{
+  border:2px solid black;
+  height:30px;
+  width:30px;
+}
+
+</style>
 <body>
   
     <h1 style="text-align: center;">Connect Five</h1>
@@ -44,5 +52,78 @@
   </td>
   <td>
     <button onclick="drop(6);">Place</button>
-  
+  </td>
+</tr> 
+</thead>  
+<script>
+document.getElementById("rules").onclick = function() {myFunction()};
+
+function myFunction() {
+document.getElementById("rules").innerHTML = "There are two buttons with distincs colors, each player will choose one team, after you will decide who goes first. Whoever goes first will click the desired row and a token will go down to the bottom of that row, then whoever is second clicks the button above their desired row. The game will continue until someone has a row of four that is vertical, diagonal, or horizontal. Though if a row is full of six tokens that row will reset, and if a token is to be surrounded by the opposite team however many tokens that is surrounded will be deleted. ";
+}
+
+function teamButtonRed(){
+document.body.style.backgroundColor = "red";
+}
+
+function teamButtonBlue(){
+document.body.style.backgroundColor = "blue";
+
+}
+
+for (var row=0; row<=5; row++){
+  document.writeln("<tr>");
+    for (var col=0; col<=6; col++){
+      document.writeln("<td id='square_" + row + "_"+ col +"' class='board_square'></td>");
+    }
+    document.writeln("</tr");
+}
+</script>
+<tbody>
+<tr>
+    <td id= "square_0_0" class= "board_square">
+        <span class="piece player0">
+        </span>
+        </td>
+  <td id= "square_0_1" class= "board_square">
+<span class="piece player0">
+</span>
+</td>
+<td id= "square_0_2" class= "board_square">
+  <span class="piece player0">
+  </span>
+  </td>
+<td id= "square_0_3" class= "board_square"> 
+  <span class="piece player0">
+  </span>
+  </td>
+<td id= "square_0_4" class= "board_square">
+  <span class="piece player0">
+  </span>
+  </td>
+<td id= "square_0_4" class= "board_square">
+  <span class="piece player0">
+  </span>
+  </td>
+<td id= "square_0_5" class= "board_square">
+  <span class="piece player0">
+  </span>
+  </td>
+<td id= "square_0_6" class= "board_square">
+  <span class="piece player0">
+  </span>       
+</td>           
+</tr>
+<tr>
+ <td id="square_1_0" class="board_square">
+   <span class="piece player0"></span>
+ </td>
+
+</tr>
+</tbody>
+</table>
+<div id="game_status">  
+</div>
+</div>
+</body>
 </html>
