@@ -16,7 +16,7 @@ td{
 }
 
 </style>
-<body>
+<body onload="beginGame();">
   
     <h1 style="text-align: center;">Connect Five</h1>
  <p><font size="5">Connect Five is a two player game that uses checkers. Players will alternate turns after placing a checker. If it is your turn, drop a checker down any of the seven cloumns that are six rows high.</font></p>  
@@ -25,10 +25,14 @@ td{
 
  <button type="button" onclick="teamButtonBlue()">Set team color blue</button>
 
+ <button id="begin_game" onClick="beginGame();">Begin Game</button>
 
  <p id="rules"><font size="5">Click for Rules</font></p>
  <div id="gameboard">
- <div id="game_info"> Winner: 1</div>
+ <div id="game_info"> 
+   Current Player: Player 1
+   <span class="player1">(red)</span>
+ </div>
  <table id="game_table">
  <thead>
   <tr>
@@ -56,6 +60,41 @@ td{
 </tr> 
 </thead>  
 <script>
+
+var game_active = false;
+var active_player = 0;
+var gameboard = [];
+var player_color = [];
+player_color[1] = "red";
+player_color[2] = "blue";
+
+function beginGame(){
+  if(game_active == true) return false;
+  game_active = true;
+    for (row=0; row<=5; row++){
+      gameboard[row] = [];
+        for (col=0; col<=6; col++){
+          gameboard [row][col] = 0;
+        }
+    }
+    drawBoard(); 
+    active_player = 1;
+    setUpTurn();
+}
+
+function drawBoard(){
+  checkForWin();
+  for(col = 0; col<=6; col++){
+    for (row = 0; row<=5; row++){
+      document.getElementById('square_'+row+'_'+col)
+      inner.HTML = "<span class='piece player"+gameboard[row][col]+"'> </span>";
+    }
+  }
+}
+
+
+
+
 document.getElementById("rules").onclick = function() {myFunction()};
 
 function myFunction() {
@@ -81,44 +120,149 @@ for (var row=0; row<=5; row++){
 </script>
 <tbody>
 <tr>
-    <td id= "square_0_0" class= "board_square">
-        <span class="piece player0">
-        </span>
+<td id= "square_0_0" class= "board_square">
+  <span class="piece player0"></span>
         </td>
   <td id= "square_0_1" class= "board_square">
-<span class="piece player0">
-</span>
+<span class="piece player0"></span>
 </td>
 <td id= "square_0_2" class= "board_square">
-  <span class="piece player0">
-  </span>
+  <span class="piece player0"></span>
   </td>
 <td id= "square_0_3" class= "board_square"> 
-  <span class="piece player0">
-  </span>
+  <span class="piece player0"></span>
   </td>
 <td id= "square_0_4" class= "board_square">
-  <span class="piece player0">
-  </span>
+  <span class="piece player0"></span>
   </td>
 <td id= "square_0_4" class= "board_square">
-  <span class="piece player0">
-  </span>
+  <span class="piece player0"></span>
   </td>
 <td id= "square_0_5" class= "board_square">
-  <span class="piece player0">
-  </span>
+  <span class="piece player0"></span>
   </td>
 <td id= "square_0_6" class= "board_square">
-  <span class="piece player0">
-  </span>       
+  <span class="piece player0"></span>       
 </td>           
 </tr>
 <tr>
  <td id="square_1_0" class="board_square">
    <span class="piece player0"></span>
  </td>
-
+ <td id="square_1_1" class="board_square">
+   <span class="piece player0"></span>
+ </td>
+ <td id="square_1_2" class="board_square">
+   <span class="piece player0"></span>
+ </td>
+ <td id="square_1_3" class="board_square">
+   <span class="piece player0"></span>
+ </td>
+ <td id="square_1_4" class="board_square">
+   <span class="piece player0"></span>
+ </td>
+ <td id="square_1_5" class="board_square">
+   <span class="piece player0"></span>
+ </td>
+<td id="square_1_6" class="board_square">
+  <span class=" piece player0"></span>
+</td>
+<tr>
+  <td id= "square_2_0" class= "board_square">
+  <span class="piece player0"></span>
+      </td>
+<td id= "square_2_1" class= "board_square">
+<span class="piece player0"></span>
+</td>
+<td id= "square_2_2" class= "board_square">
+<span class="piece player0"></span>
+</td>
+<td id= "square_2_3" class= "board_square"> 
+<span class="piece player0"></span>
+</td>
+<td id= "square_2_4" class= "board_square">
+<span class="piece player0"></span>
+</td>
+<td id= "square_2_4" class= "board_square">
+<span class="piece player0"></span>
+</td>
+<td id= "square_2_5" class= "board_square">
+<span class="piece player0"></span>
+</td>
+<td id= "square_2_6" class= "board_square">
+<span class="piece player0"></span>       
+</td>           
+</tr>
+<tr>
+<td id="square_3_0" class="board_square">
+ <span class="piece player0"></span>
+</td>
+<td id="square_3_1" class="board_square">
+ <span class="piece player0"></span>
+</td>
+<td id="square_3_2" class="board_square">
+ <span class="piece player0"></span>
+</td>
+<td id="square_3_3" class="board_square">
+ <span class="piece player0"></span>
+</td>
+<td id="square_3_4" class="board_square">
+ <span class="piece player0"></span>
+</td>
+<td id="square_3_5" class="board_square">
+ <span class="piece player0"></span>
+</td>
+<td id="square_3_6" class="board_square">
+<span class=" piece player0"></span>
+</td>
+<tr>
+  <td id= "square_4_0" class= "board_square">
+      <span class="piece player0"></span>
+      </td>
+<td id= "square_4_1" class= "board_square">
+<span class="piece player0"></span>
+</td>
+<td id= "square_4_2" class= "board_square">
+<span class="piece player0"></span>
+</td>
+<td id= "square_4_3" class= "board_square"> 
+<span class="piece player0"></span>
+</td>
+<td id= "square_4_4" class= "board_square">
+<span class="piece player0"></span>
+</td>
+<td id= "square_4_4" class= "board_square">
+<span class="piece player0"></span>
+</td>
+<td id= "square_4_5" class= "board_square">
+<span class="piece player0"></span>
+</td>
+<td id= "square_4_6" class= "board_square">
+<span class="piece player0"></span>       
+</td>           
+</tr>
+<tr>
+<td id="square_5_0" class="board_square">
+<span class="piece player0"></span>
+</td>
+<td id="square_5_1" class="board_square">
+<span class="piece player0"></span>
+</td>
+<td id="square_5_2" class="board_square">
+<span class="piece player0"></span>
+</td>
+<td id="square_5_3" class="board_square">
+<span class="piece player0"></span>
+</td>
+<td id="square_5_4" class="board_square">
+<span class="piece player0"></span>
+</td>
+<td id="square_5_5" class="board_square">
+<span class="piece player0"></span>
+</td>
+<td id="square_5_6" class="board_square">
+<span class=" piece player0"></span>
+</td>
 </tr>
 </tbody>
 </table>
