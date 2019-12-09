@@ -92,6 +92,15 @@ function drawBoard(){
   }
 }
 
+function checkForWin(){
+  for (i = 1; i<=2; i++){
+    for(col = 0; col<=3; col++){
+      if (gameboard[row][col] ==3){
+
+      }
+    }
+  }
+}
 
 
 
@@ -112,7 +121,7 @@ document.body.style.backgroundColor = "blue";
 
 for (var row=0; row<=5; row++){
   document.writeln("<tr>");
-    for (var col=0; col<=6; col++){
+    for (var col = 0; col<=6; col++){
       document.writeln("<td id='square_" + row + "_"+ col +"' class='board_square'></td>");
     }
     document.writeln("</tr");
