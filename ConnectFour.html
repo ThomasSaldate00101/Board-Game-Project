@@ -95,8 +95,24 @@ function drawBoard(){
 function checkForWin(){
   for (i = 1; i<=2; i++){
     for(col = 0; col<=3; col++){
-      if (gameboard[row][col] ==3){
-
+      for(row = 0; row<=5; row++){
+        if (gameboard[row][col] ==3){
+          if((gameboard[row][col+1] == i) &&
+            (gameboard[row][col+2] == i) && (gameboard[row][col+3] == i)){
+              endGame(i);
+              return true;
+            }
+        } 
+      }
+    }
+  }
+  for (i = 1; i<=2; i++){
+    for (col = 0; col<=6; col++){
+      for (row = 0; row<=2; row++){
+        if(gameboard[row][col] == i){
+          if ((gameboard[row+1][col] == i) && 
+             (gameboard[row][col] )
+        }
       }
     }
   }
