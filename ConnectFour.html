@@ -83,7 +83,7 @@ function beginGame(){
 }
 
 function drawBoard(){
-  checkForWin();
+  checkWin();
   for(col = 0; col<=6; col++){
     for (row = 0; row<=5; row++){
       document.getElementById('square_'+row+'_'+col)
@@ -92,7 +92,7 @@ function drawBoard(){
   }
 }
 
-function checkForWin(){
+function checkWin(){
   for (i = 1; i<=2; i++){
     for(col = 0; col<=3; col++){
       for(row = 0; row<=5; row++){
@@ -111,14 +111,50 @@ function checkForWin(){
       for (row = 0; row<=2; row++){
         if(gameboard[row][col] == i){
           if ((gameboard[row+1][col] == i) && 
-             (gameboard[row][col] )
+             (gameboard[row][col] == i) && (gameboard[row+3][col] == i)){
+                endGame(i);
+                return true;
+             }
         }
       }
     }
   }
+  for (i = 1; i<=2; i++){
+    for(col = 0; col<=3; col++){
+      for(row = 0; row<=2; row++){
+        if (gameboard[row][col] == i){
+          if ((gameboard[row+1][col+1] == i) && (gameboard[row+2][col+2] == i) && (gameboard[row+3][col+3] == i) && (gameboard[row+3][col+3] == i)) {
+            endGame(i);
+            return true;
+          }
+        }
+      }
+    }
+  }
+  for (i = 1; i<=2; i++){
+    for(col = 0; col<=3; col++){
+      for (row=3; row<=5; row++){
+        if (gameboard[row][col] == i){
+          if ((gameboard[row-1][col+1] == i) && (gameboard[row-2][col+2] == i) && (gameboard[row-3][col+3]== i)){
+            endGame(i);
+            return true;
+          }
+        }
+      } 
+    }
+  }
 }
 
+function endGame(winner){
+  game_active = false; 
+  document.getElementById('game_info').innerHTML = "Winner;" + winner;
+}
 
+function setUpTurn(){
+  if (game_active){
+    document.getElementById('game_info').innerHTML = "Current Player: Player" + active_player + "<span class='player" +active_player+"'>("+ player_color[active_player]+")</span>">;
+  }
+}
 
 document.getElementById("rules").onclick = function() {myFunction()};
 
